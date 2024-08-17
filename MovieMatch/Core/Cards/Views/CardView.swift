@@ -5,11 +5,12 @@
 //  Created by Archish Mehta on 2024-08-16.
 //
 import SwiftUI
+
 struct CardView: View {
+    @ObservedObject var viewModel: CardsViewModel
     @State private var xOffset: CGFloat = 0
     @State private var degrees: Double = 0
     @State private var currentImageIndex = 0
-    
     
     let model: CardModel
     
@@ -19,6 +20,7 @@ struct CardView: View {
                 Image(model.user.profileImageURLs[currentImageIndex])  // placeholder image
                     .resizable()
                     .scaledToFill()
+                    .frame(width: SizeConstants.cardWidth, height: SizeConstants.cardHeight)
                     .overlay{
                         ImageScrollingOverlay(currentImageIndex: $currentImageIndex, imageCount: imageCount)
                     }
@@ -41,38 +43,51 @@ struct CardView: View {
         )
     }
 }
+
 private extension CardView {
-    func returnToCenter () {
+    func returnToCenter() {
         xOffset = 0
         degrees = 0
-    }
-    
-    func swipeRight(){
-        xOffset = 500
-        degrees = 12
         
     }
-    func swipleLeft() {
-        xOffset = -500
-        degrees = -12
+    
+    func swipeRight() {
+        withAnimation {
+            xOffset = 500
+            degrees = 12
+        } completion: {
+            viewModel.removeCard(model)
+
+        }
+    }
+    
+    func swipeLeft() {
+        withAnimation {
+            xOffset = -500
+            degrees = -12
+        } completion: {
+            viewModel.removeCard(model)
+        }
     }
 }
+
 private extension CardView {
     var user: User {
         return model.user
-         
     }
+    
     var imageCount: Int {
         return user.profileImageURLs.count
     }
 }
 
 private extension CardView {
-    func onDragChanged(value: DragGesture.Value) {  // Corrects the gesture value type
+    func onDragChanged(value: DragGesture.Value) {
         xOffset = value.translation.width
         degrees = Double(value.translation.width / 25)
     }
-    func onDragEnded(value: DragGesture.Value) {  // Corrects the gesture value type
+    
+    func onDragEnded(value: DragGesture.Value) {
         let width = value.translation.width
         
         if abs(width) <= abs(SizeConstants.screenCutoff) {
@@ -83,10 +98,14 @@ private extension CardView {
         if width >= SizeConstants.screenCutoff {
             swipeRight()
         } else {
-            swipleLeft()
+            swipeLeft()  // Call swipeLeft() instead of swipleLeft()
         }
     }
 }
+
 #Preview {
-    CardView(model: CardModel(user: MockData.users[1]))
+    CardView(
+        viewModel: CardsViewModel(service: CardService()),
+        model: CardModel(user: MockData.users[1])
+    )
 }
