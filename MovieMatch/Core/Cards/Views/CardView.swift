@@ -9,6 +9,7 @@ import SwiftUI
 struct CardView: View {
     @ObservedObject var viewModel: CardsViewModel
     @State private var xOffset: CGFloat = 0
+    @State private var yOffset: CGFloat = 0 // Added yOffset for vertical swipes
     @State private var degrees: Double = 0
     @State private var currentImageIndex = 0
     
@@ -17,7 +18,7 @@ struct CardView: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             ZStack(alignment:.top) {
-                Image(model.user.profileImageURLs[currentImageIndex])  // placeholder image
+                Image(model.user.profileImageURLs[currentImageIndex])
                     .resizable()
                     .scaledToFill()
                     .frame(width: SizeConstants.cardWidth, height: SizeConstants.cardHeight)
@@ -31,11 +32,12 @@ struct CardView: View {
             UserInfoView(userInfo: model.user)
                 .padding(.horizontal)
         }
+        .onReceive(viewModel.$ButtonSwipeAction, perform: {action in onReceiveSwipeAction(action)}) // Corrected function call
         .frame(width: SizeConstants.cardWidth, height: SizeConstants.cardHeight)
         .clipShape(RoundedRectangle(cornerRadius: 10))
-        .offset(x: xOffset)
+        .offset(x: xOffset, y: yOffset) // Consider both xOffset and yOffset
         .rotationEffect(.degrees(degrees))
-        .animation(.snappy, value: xOffset)  // Correctly places animation with the appropriate value
+        .animation(.snappy, value: xOffset)  // Apply animation to xOffset and yOffset
         .gesture(
             DragGesture()
                 .onChanged(onDragChanged)
@@ -47,8 +49,8 @@ struct CardView: View {
 private extension CardView {
     func returnToCenter() {
         xOffset = 0
+        yOffset = 0 // Reset yOffset as well
         degrees = 0
-        
     }
     
     func swipeRight() {
@@ -57,7 +59,6 @@ private extension CardView {
             degrees = 12
         } completion: {
             viewModel.removeCard(model)
-
         }
     }
     
@@ -67,6 +68,43 @@ private extension CardView {
             degrees = -12
         } completion: {
             viewModel.removeCard(model)
+        }
+    }
+    
+    func swipeUp() {
+        withAnimation {
+            yOffset = -500
+            degrees = -12
+        } completion: {
+            viewModel.removeCard(model)
+        }
+    }
+
+    func swipeDown() {
+        withAnimation {
+            yOffset = 500
+            degrees = 12
+        } completion: {
+            viewModel.removeCard(model)
+        }
+    }
+    
+    func onReceiveSwipeAction(_ action: SwipeAction?) {
+        guard let action else { return }
+        
+        let topCard = viewModel.cardModels.last
+        
+        if topCard == model {
+            switch action {
+            case .reject:
+                swipeLeft()
+            case .like:
+                swipeRight()
+            case .dontWantToWatch:
+                swipeDown()
+            case .wantToWatch:
+                swipeUp()
+            }
         }
     }
 }
@@ -98,7 +136,7 @@ private extension CardView {
         if width >= SizeConstants.screenCutoff {
             swipeRight()
         } else {
-            swipeLeft()  // Call swipeLeft() instead of swipleLeft()
+            swipeLeft()
         }
     }
 }

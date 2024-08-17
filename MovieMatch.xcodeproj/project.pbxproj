@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		211F45F52C710E8600ABBAC3 /* SwiftActionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211F45F42C710E8600ABBAC3 /* SwiftActionButtonView.swift */; };
+		211F45F72C711DC600ABBAC3 /* SwipeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211F45F62C711DC600ABBAC3 /* SwipeAction.swift */; };
 		2127EEAD2C6FE0AF004C0C50 /* MovieMatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2127EEAC2C6FE0AF004C0C50 /* MovieMatchApp.swift */; };
 		2127EEAF2C6FE0AF004C0C50 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2127EEAE2C6FE0AF004C0C50 /* ContentView.swift */; };
 		2127EEB12C6FE0B0004C0C50 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2127EEB02C6FE0B0004C0C50 /* Assets.xcassets */; };
@@ -27,6 +29,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		211F45F42C710E8600ABBAC3 /* SwiftActionButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftActionButtonView.swift; sourceTree = "<group>"; };
+		211F45F62C711DC600ABBAC3 /* SwipeAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeAction.swift; sourceTree = "<group>"; };
 		2127EEA92C6FE0AF004C0C50 /* MovieMatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieMatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2127EEAC2C6FE0AF004C0C50 /* MovieMatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieMatchApp.swift; sourceTree = "<group>"; };
 		2127EEAE2C6FE0AF004C0C50 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -182,6 +186,7 @@
 				2127EED22C6FF568004C0C50 /* ImageScrollingOverlay.swift */,
 				2127EED42C6FFE19004C0C50 /* CardImageIndicatorView.swift */,
 				2127EED62C700962004C0C50 /* CardStackView.swift */,
+				211F45F42C710E8600ABBAC3 /* SwiftActionButtonView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -206,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				2127EEDC2C703AB4004C0C50 /* CardModel.swift */,
+				211F45F62C711DC600ABBAC3 /* SwipeAction.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -309,9 +315,11 @@
 				2127EEAF2C6FE0AF004C0C50 /* ContentView.swift in Sources */,
 				2127EEAD2C6FE0AF004C0C50 /* MovieMatchApp.swift in Sources */,
 				2127EEE62C703D97004C0C50 /* MockData.swift in Sources */,
+				211F45F72C711DC600ABBAC3 /* SwipeAction.swift in Sources */,
 				2127EECA2C6FE4E3004C0C50 /* CardView.swift in Sources */,
 				2127EED52C6FFE19004C0C50 /* CardImageIndicatorView.swift in Sources */,
 				2127EEDD2C703AB4004C0C50 /* CardModel.swift in Sources */,
+				211F45F52C710E8600ABBAC3 /* SwiftActionButtonView.swift in Sources */,
 				2127EED72C700962004C0C50 /* CardStackView.swift in Sources */,
 				2127EEC62C6FE3DD004C0C50 /* MainTabView.swift in Sources */,
 				2127EED12C6FE5D0004C0C50 /* SizeConstants.swift in Sources */,
