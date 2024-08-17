@@ -11,7 +11,7 @@ import SwiftUI
 struct MovieMatchApp: App {
     var body: some Scene {
         WindowGroup {
-            CardView()
+                CardStackView()
         }
     }
 }

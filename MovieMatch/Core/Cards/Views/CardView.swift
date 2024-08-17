@@ -8,17 +8,25 @@ import SwiftUI
 struct CardView: View {
     @State private var xOffset: CGFloat = 0
     @State private var degrees: Double = 0
+    @State private var currentImageIndex = 0
+    
+    
+    let model: CardModel
     
     var body: some View {
         ZStack(alignment: .bottom) {
             ZStack(alignment:.top) {
-                Image(systemName: "photo")  // placeholder image
+                Image(model.user.profileImageURLs[currentImageIndex])  // placeholder image
                     .resizable()
                     .scaledToFill()
+                    .overlay{
+                        ImageScrollingOverlay(currentImageIndex: $currentImageIndex, imageCount: imageCount)
+                    }
+                CardImageIndicatorView(currentImageIndex: currentImageIndex, imageCount: imageCount)
                 
                 SwipeActionIndicatorView(xOffset: $xOffset, screenCutoff: SizeConstants.screenCutoff)
             }
-            UserInfoView()
+            UserInfoView(userInfo: model.user)
                 .padding(.horizontal)
         }
         .frame(width: SizeConstants.cardWidth, height: SizeConstants.cardHeight)
@@ -34,6 +42,32 @@ struct CardView: View {
     }
 }
 private extension CardView {
+    func returnToCenter () {
+        xOffset = 0
+        degrees = 0
+    }
+    
+    func swipeRight(){
+        xOffset = 500
+        degrees = 12
+        
+    }
+    func swipleLeft() {
+        xOffset = -500
+        degrees = -12
+    }
+}
+private extension CardView {
+    var user: User {
+        return model.user
+         
+    }
+    var imageCount: Int {
+        return user.profileImageURLs.count
+    }
+}
+
+private extension CardView {
     func onDragChanged(value: DragGesture.Value) {  // Corrects the gesture value type
         xOffset = value.translation.width
         degrees = Double(value.translation.width / 25)
@@ -42,11 +76,17 @@ private extension CardView {
         let width = value.translation.width
         
         if abs(width) <= abs(SizeConstants.screenCutoff) {
-            xOffset = 0
-            degrees = 0
+            returnToCenter()
+            return
+        }
+        
+        if width >= SizeConstants.screenCutoff {
+            swipeRight()
+        } else {
+            swipleLeft()
         }
     }
 }
 #Preview {
-    CardView()
+    CardView(model: CardModel(user: MockData.users[1]))
 }

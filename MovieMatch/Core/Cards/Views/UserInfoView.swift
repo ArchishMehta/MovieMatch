@@ -7,14 +7,17 @@
 
 import SwiftUI
 struct UserInfoView: View {
+    
+    let userInfo: User
+    
     var body: some View {
         VStack(alignment:.leading ) {
             HStack {
-                Text("Soul")
+                Text(userInfo.movie)
                     .font(.title)
                     .fontWeight(.heavy)
                 
-                Text("2020")
+                Text(String(userInfo.year))
                     .font(.title)
                     .fontWeight(.light)
                 
@@ -40,5 +43,6 @@ struct UserInfoView: View {
     }
 }
 #Preview {
-    UserInfoView()
+    UserInfoView(userInfo: User(id: "", movie: "", year: 0, profileImageURLs: [
+    ]))
 }
