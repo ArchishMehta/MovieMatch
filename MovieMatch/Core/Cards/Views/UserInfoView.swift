@@ -7,6 +7,7 @@
 
 import SwiftUI
 struct UserInfoView: View {
+    @Binding var showProfileModel: Bool
     
     let userInfo: User
     
@@ -24,7 +25,7 @@ struct UserInfoView: View {
                 Spacer()
                 
                 Button {
-                    print("DEBUG: Show profile here ..")
+                    showProfileModel.toggle()
                 } label: {
                     Image(systemName: "arrow.up.circle")
                         .fontWeight(.bold)
@@ -43,6 +44,5 @@ struct UserInfoView: View {
     }
 }
 #Preview {
-    UserInfoView(userInfo: User(id: "", movie: "", year: 0, profileImageURLs: [
-    ]))
+    UserInfoView(showProfileModel: .constant(false), userInfo: MockData.users[1])
 }

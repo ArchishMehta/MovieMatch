@@ -12,6 +12,7 @@ struct CardView: View {
     @State private var yOffset: CGFloat = 0 // Added yOffset for vertical swipes
     @State private var degrees: Double = 0
     @State private var currentImageIndex = 0
+    @State private var showProfileModel = false 
     
     let model: CardModel
     
@@ -29,9 +30,13 @@ struct CardView: View {
                 
                 SwipeActionIndicatorView(xOffset: $xOffset, screenCutoff: SizeConstants.screenCutoff)
             }
-            UserInfoView(userInfo: model.user)
+            UserInfoView(showProfileModel: $showProfileModel, userInfo: user)
                 .padding(.horizontal)
         }
+        .fullScreenCover(isPresented:  $showProfileModel) {
+            UserProfileView(user: user)
+        }
+        
         .onReceive(viewModel.$ButtonSwipeAction, perform: {action in onReceiveSwipeAction(action)}) // Corrected function call
         .frame(width: SizeConstants.cardWidth, height: SizeConstants.cardHeight)
         .clipShape(RoundedRectangle(cornerRadius: 10))
@@ -73,8 +78,8 @@ private extension CardView {
     
     func swipeUp() {
         withAnimation {
-            yOffset = -500
-            degrees = -12
+            yOffset = -1000
+            degrees = 0
         } completion: {
             viewModel.removeCard(model)
         }
@@ -82,8 +87,8 @@ private extension CardView {
 
     func swipeDown() {
         withAnimation {
-            yOffset = 500
-            degrees = 12
+            yOffset = 1000
+            degrees = 0
         } completion: {
             viewModel.removeCard(model)
         }

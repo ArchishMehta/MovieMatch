@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		211F45F52C710E8600ABBAC3 /* SwiftActionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211F45F42C710E8600ABBAC3 /* SwiftActionButtonView.swift */; };
 		211F45F72C711DC600ABBAC3 /* SwipeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211F45F62C711DC600ABBAC3 /* SwipeAction.swift */; };
+		211F45F92C712F6C00ABBAC3 /* UserProfileVoew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211F45F82C712F6C00ABBAC3 /* UserProfileVoew.swift */; };
 		2127EEAD2C6FE0AF004C0C50 /* MovieMatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2127EEAC2C6FE0AF004C0C50 /* MovieMatchApp.swift */; };
 		2127EEAF2C6FE0AF004C0C50 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2127EEAE2C6FE0AF004C0C50 /* ContentView.swift */; };
 		2127EEB12C6FE0B0004C0C50 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2127EEB02C6FE0B0004C0C50 /* Assets.xcassets */; };
@@ -31,6 +32,7 @@
 /* Begin PBXFileReference section */
 		211F45F42C710E8600ABBAC3 /* SwiftActionButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftActionButtonView.swift; sourceTree = "<group>"; };
 		211F45F62C711DC600ABBAC3 /* SwipeAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeAction.swift; sourceTree = "<group>"; };
+		211F45F82C712F6C00ABBAC3 /* UserProfileVoew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserProfileVoew.swift; path = MovieMatch/Core/Cards/Model/UserProfileVoew.swift; sourceTree = SOURCE_ROOT; };
 		2127EEA92C6FE0AF004C0C50 /* MovieMatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieMatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2127EEAC2C6FE0AF004C0C50 /* MovieMatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieMatchApp.swift; sourceTree = "<group>"; };
 		2127EEAE2C6FE0AF004C0C50 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 		2127EEBB2C6FE14B004C0C50 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				211F45F82C712F6C00ABBAC3 /* UserProfileVoew.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2127EED32C6FF568004C0C50 /* ImageScrollingOverlay.swift in Sources */,
+				211F45F92C712F6C00ABBAC3 /* UserProfileVoew.swift in Sources */,
 				2127EEE32C703C48004C0C50 /* CardService.swift in Sources */,
 				2127EEAF2C6FE0AF004C0C50 /* ContentView.swift in Sources */,
 				2127EEAD2C6FE0AF004C0C50 /* MovieMatchApp.swift in Sources */,

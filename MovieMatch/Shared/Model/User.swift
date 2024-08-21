@@ -12,4 +12,5 @@ struct User: Identifiable, Hashable {
     let movie: String
     var year: Int
     var profileImageURLs: [String]
+
 }
