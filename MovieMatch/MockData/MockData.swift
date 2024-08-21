@@ -28,5 +28,6 @@ struct MockData {
             year: 2016,
             profileImageURLs: ["moana","moana2"]
         ),
+       
     ]
 }
