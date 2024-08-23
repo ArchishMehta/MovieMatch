@@ -24,10 +24,10 @@ struct CardStackView: View {
             }
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    Image(.logo)
+                    Image(.movielogo)
                         .resizable()
                         .scaledToFill()
-                        .frame(width: 88)
+                        .frame(width: 80)
                 }
             }
         }

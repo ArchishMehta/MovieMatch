@@ -37,12 +37,12 @@ struct CardView: View {
             UserProfileView(user: user)
         }
         
-        .onReceive(viewModel.$ButtonSwipeAction, perform: {action in onReceiveSwipeAction(action)}) // Corrected function call
+        .onReceive(viewModel.$ButtonSwipeAction, perform: { action in onReceiveSwipeAction(action) })
         .frame(width: SizeConstants.cardWidth, height: SizeConstants.cardHeight)
         .clipShape(RoundedRectangle(cornerRadius: 10))
-        .offset(x: xOffset, y: yOffset) // Consider both xOffset and yOffset
+        .offset(x: xOffset, y: yOffset) // Apply both xOffset and yOffset
         .rotationEffect(.degrees(degrees))
-        .animation(.snappy, value: xOffset)  // Apply animation to xOffset and yOffset
+        .animation(.snappy, value: xOffset) // Apply animation to both xOffset and yOffset
         .gesture(
             DragGesture()
                 .onChanged(onDragChanged)
@@ -127,21 +127,38 @@ private extension CardView {
 private extension CardView {
     func onDragChanged(value: DragGesture.Value) {
         xOffset = value.translation.width
+        yOffset = value.translation.height // Track vertical translation
         degrees = Double(value.translation.width / 25)
     }
     
     func onDragEnded(value: DragGesture.Value) {
         let width = value.translation.width
-        
-        if abs(width) <= abs(SizeConstants.screenCutoff) {
-            returnToCenter()
-            return
-        }
-        
-        if width >= SizeConstants.screenCutoff {
-            swipeRight()
-        } else {
-            swipeLeft()
+        let height = value.translation.height
+
+        if abs(width) > abs(height) { // Horizontal swipe
+            if abs(width) <= abs(SizeConstants.screenCutoff) {
+                returnToCenter()
+                return
+            }
+
+            if width >= SizeConstants.screenCutoff {
+                swipeRight()
+            } else {
+                swipeLeft()
+            }
+        } else { // Vertical swipe
+            if abs(height) <= abs(SizeConstants.screenCutoff) {
+                returnToCenter()
+                return
+            }
+
+            if height <= -SizeConstants.screenCutoff { // Swipe up
+                swipeUp()
+            } else if height >= SizeConstants.screenCutoff { // Swipe down
+                swipeDown()
+            } else {
+                returnToCenter()
+            }
         }
     }
 }

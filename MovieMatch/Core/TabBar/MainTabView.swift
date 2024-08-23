@@ -24,7 +24,7 @@ struct MainTabView: View {
                 .tabItem {
                     Image(systemName: "person")
                 }
-                .tag(2)
+                .tag(2)  
         }
         .tint(.primary)
     }
