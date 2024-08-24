@@ -31,6 +31,10 @@
 		2127EEE02C703BA4004C0C50 /* CardsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2127EEDF2C703BA4004C0C50 /* CardsViewModel.swift */; };
 		2127EEE32C703C48004C0C50 /* CardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2127EEE22C703C48004C0C50 /* CardService.swift */; };
 		2127EEE62C703D97004C0C50 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2127EEE52C703D97004C0C50 /* MockData.swift */; };
+		214ADF692C795DF200A6EDB7 /* DatabaseFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214ADF682C795DF200A6EDB7 /* DatabaseFetch.swift */; };
+		214ADF6B2C7962CA00A6EDB7 /* Datamodels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214ADF6A2C7962CA00A6EDB7 /* Datamodels.swift */; };
+		214ADF6D2C79642B00A6EDB7 /* PopularMovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214ADF6C2C79642B00A6EDB7 /* PopularMovieViewModel.swift */; };
+		214ADF6F2C79645200A6EDB7 /* PopularMovieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214ADF6E2C79645200A6EDB7 /* PopularMovieView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +63,10 @@
 		2127EEDF2C703BA4004C0C50 /* CardsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsViewModel.swift; sourceTree = "<group>"; };
 		2127EEE22C703C48004C0C50 /* CardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardService.swift; sourceTree = "<group>"; };
 		2127EEE52C703D97004C0C50 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
+		214ADF682C795DF200A6EDB7 /* DatabaseFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DatabaseFetch.swift; path = MovieMatch/Core/Profile/EditProfile/DatabaseFetch.swift; sourceTree = SOURCE_ROOT; };
+		214ADF6A2C7962CA00A6EDB7 /* Datamodels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Datamodels.swift; path = MovieMatch/Core/Profile/EditProfile/Datamodels.swift; sourceTree = SOURCE_ROOT; };
+		214ADF6C2C79642B00A6EDB7 /* PopularMovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularMovieViewModel.swift; sourceTree = "<group>"; };
+		214ADF6E2C79645200A6EDB7 /* PopularMovieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularMovieView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,7 +128,7 @@
 				2127EEE42C703D8C004C0C50 /* MockData */,
 				2127EEC12C6FE2C5004C0C50 /* Utils */,
 				2127EEC02C6FE2B8004C0C50 /* Shared */,
-				2127EEBF2C6FE2A9004C0C50 /* Extensions */,
+				2127EEBF2C6FE2A9004C0C50 /* DatabaseFetch */,
 				2127EEBE2C6FE241004C0C50 /* App */,
 				2127EEBD2C6FE16D004C0C50 /* Core */,
 				2127EEAC2C6FE0AF004C0C50 /* MovieMatchApp.swift */,
@@ -185,11 +193,13 @@
 			path = App;
 			sourceTree = "<group>";
 		};
-		2127EEBF2C6FE2A9004C0C50 /* Extensions */ = {
+		2127EEBF2C6FE2A9004C0C50 /* DatabaseFetch */ = {
 			isa = PBXGroup;
 			children = (
+				214ADF682C795DF200A6EDB7 /* DatabaseFetch.swift */,
+				214ADF6A2C7962CA00A6EDB7 /* Datamodels.swift */,
 			);
-			path = Extensions;
+			path = DatabaseFetch;
 			sourceTree = "<group>";
 		};
 		2127EEC02C6FE2B8004C0C50 /* Shared */ = {
@@ -220,12 +230,14 @@
 			isa = PBXGroup;
 			children = (
 				2127EEC92C6FE4E3004C0C50 /* CardView.swift */,
+				214ADF6E2C79645200A6EDB7 /* PopularMovieView.swift */,
 				2127EECB2C6FE52F004C0C50 /* UserInfoView.swift */,
 				2127EECD2C6FE56C004C0C50 /* SwipeActionIndicator.swift */,
 				2127EED22C6FF568004C0C50 /* ImageScrollingOverlay.swift */,
 				2127EED42C6FFE19004C0C50 /* CardImageIndicatorView.swift */,
 				2127EED62C700962004C0C50 /* CardStackView.swift */,
 				211F45F42C710E8600ABBAC3 /* SwiftActionButtonView.swift */,
+				214ADF6C2C79642B00A6EDB7 /* PopularMovieViewModel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -356,6 +368,7 @@
 				2127EEE32C703C48004C0C50 /* CardService.swift in Sources */,
 				2123B67E2C76858E0055C010 /* CurrentUserProfileHeaderView.swift in Sources */,
 				2127EEAF2C6FE0AF004C0C50 /* ContentView.swift in Sources */,
+				214ADF6F2C79645200A6EDB7 /* PopularMovieView.swift in Sources */,
 				2127EEAD2C6FE0AF004C0C50 /* MovieMatchApp.swift in Sources */,
 				2127EEE62C703D97004C0C50 /* MockData.swift in Sources */,
 				211F45F72C711DC600ABBAC3 /* SwipeAction.swift in Sources */,
@@ -363,11 +376,14 @@
 				2127EED52C6FFE19004C0C50 /* CardImageIndicatorView.swift in Sources */,
 				2127EEDD2C703AB4004C0C50 /* CardModel.swift in Sources */,
 				211F45F52C710E8600ABBAC3 /* SwiftActionButtonView.swift in Sources */,
+				214ADF6D2C79642B00A6EDB7 /* PopularMovieViewModel.swift in Sources */,
 				2123B6832C76C2E40055C010 /* ProfileImageGridView.swift in Sources */,
 				2127EED72C700962004C0C50 /* CardStackView.swift in Sources */,
 				2127EEC62C6FE3DD004C0C50 /* MainTabView.swift in Sources */,
+				214ADF6B2C7962CA00A6EDB7 /* Datamodels.swift in Sources */,
 				2127EED12C6FE5D0004C0C50 /* SizeConstants.swift in Sources */,
 				2127EECE2C6FE56C004C0C50 /* SwipeActionIndicator.swift in Sources */,
+				214ADF692C795DF200A6EDB7 /* DatabaseFetch.swift in Sources */,
 				2127EEE02C703BA4004C0C50 /* CardsViewModel.swift in Sources */,
 				2127EECC2C6FE52F004C0C50 /* UserInfoView.swift in Sources */,
 				2127EEDA2C700CCC004C0C50 /* User.swift in Sources */,

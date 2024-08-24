@@ -6,11 +6,12 @@
 //
 
 import SwiftUI
-
 struct EditProfileView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var bio = ""
     @State private var favmovie = ""
+    @Binding var name: String
+    @Binding var email: String
     let user: User
     
     var body: some View {
@@ -90,5 +91,5 @@ struct EditProfileView: View {
 }
 
 #Preview {
-    EditProfileView(user: MockData.users[1])
+    EditProfileView(name: .constant("John Doe"), email: .constant("john.doe@example.com"), user: MockData.users[1])
 }

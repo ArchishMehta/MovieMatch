@@ -14,7 +14,7 @@ struct MainTabView: View {
                 }
                 .tag(0)
             
-            Text("Search View")
+            PopularMoviesView() // Replace "Search View" with PopularMoviesView
                 .tabItem {
                     Image(systemName: "magnifyingglass")
                 }
@@ -24,7 +24,7 @@ struct MainTabView: View {
                 .tabItem {
                     Image(systemName: "person")
                 }
-                .tag(2)  
+                .tag(2)
         }
         .tint(.primary)
     }

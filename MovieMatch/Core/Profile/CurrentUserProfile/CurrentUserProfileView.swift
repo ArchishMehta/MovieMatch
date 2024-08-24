@@ -1,66 +1,116 @@
-//
-//  CurrentUserProfileView.swift
-//  MovieMatch
-//
-//  Created by Archish Mehta on 2024-08-21.
-//
-
 import SwiftUI
 
 struct CurrentUserProfileView: View {
     @State private var showEditProfile = false
+    @State private var name: String = ""
+    @State private var email: String = "test@gmail.com"
+    @State private var showDeleteConfirmation = false
+    @State private var showTermsOfService = false
     let user: User
     
     var body: some View {
         NavigationStack {
             List {
-                // header view
+                // Header view with circular profile picture
                 HStack {
-                    Text(user.movie)
-                        .font(.title2)
-                        .fontWeight(.semibold)
+                    Image(user.profileImageURLs.first ?? "defaultProfileImage") // Use a default image if none available
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 80, height: 80)
+                        .clipShape(Circle())
+                        .overlay(Circle().stroke(Color.white, lineWidth: 4)) // Optional: add a border
+                        .shadow(radius: 5) // Optional: add shadow for better visibility
+                    
+                    VStack(alignment: .leading) {
+                        Text(user.movie)
+                            .font(.title2)
+                            .fontWeight(.semibold)
+                        Text("Email: \(email)") // Display email or other info
+                            .font(.subheadline)
+                    }
+                    .padding(.leading, 8)
+                    
+                    Spacer()
                 }
                 .onTapGesture {
                     showEditProfile.toggle()
                 }
                 
-                // account info
+                // Account info
                 Section("Account Information") {
                     HStack {
                         Text("Name")
                         Spacer()
-                        Text(user.movie)
+                        TextField("Enter your name", text: $name)
+                            .multilineTextAlignment(.trailing)
                     }
                     HStack {
                         Text("Email")
                         Spacer()
-                        Text("test@gmail.com")
+                        TextField("Enter your email", text: $email)
+                            .multilineTextAlignment(.trailing)
+                            .keyboardType(.emailAddress)
+                            .autocapitalization(.none)
                     }
                 }
                 
-                // legal section
+                // Legal section
                 Section("Legal") {
-                    Text("Terms of Service")
+                    Button("Terms of Service") {
+                        showTermsOfService.toggle()
+                    }
+                    .sheet(isPresented: $showTermsOfService) {
+                        TermsOfServiceView()
+                    }
                 }
                 
-                // logout and delete account section
+                // Logout and delete account section
                 Section {
                     Button("Logout") {
-                        print("DEBUG: Logout here")
+                        logout()
                     }
                     .foregroundStyle(.red)
                     
                     Button("Delete Account") {
-                        print("DEBUG: Delete account here")
+                        showDeleteConfirmation.toggle()
                     }
                     .foregroundStyle(.red)
+                    .confirmationDialog("Are you sure you want to delete your account?", isPresented: $showDeleteConfirmation) {
+                        Button("Delete", role: .destructive) {
+                            deleteAccount()
+                        }
+                        Button("Cancel", role: .cancel) { }
+                    }
                 }
             }
             .navigationTitle("Profile")
             .navigationBarTitleDisplayMode(.inline)
             .fullScreenCover(isPresented: $showEditProfile) {
-                EditProfileView(user: user)
+                EditProfileView(name: $name, email: $email, user: user)
             }
+        }
+    }
+    
+    // MARK: - Functions
+    
+    func logout() {
+        // Perform logout actions, e.g., clear user session and navigate to login screen
+        print("DEBUG: User logged out")
+    }
+    
+    func deleteAccount() {
+        // Perform delete account actions, e.g., call API to delete the user's account
+        print("DEBUG: Account deleted")
+    }
+}
+
+struct TermsOfServiceView: View {
+    var body: some View {
+        NavigationStack {
+            Text("Terms of Service Content")
+                .padding()
+                .navigationTitle("Terms of Service")
+                .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
