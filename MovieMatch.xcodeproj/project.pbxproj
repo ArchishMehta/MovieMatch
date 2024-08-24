@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		211C43742C7A5F47000B4755 /* UIImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211C43732C7A5F47000B4755 /* UIImagePickerController.swift */; };
 		211F45F52C710E8600ABBAC3 /* SwiftActionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211F45F42C710E8600ABBAC3 /* SwiftActionButtonView.swift */; };
 		211F45F72C711DC600ABBAC3 /* SwipeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211F45F62C711DC600ABBAC3 /* SwipeAction.swift */; };
 		211F45F92C712F6C00ABBAC3 /* UserProfileVoew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211F45F82C712F6C00ABBAC3 /* UserProfileVoew.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		211C43732C7A5F47000B4755 /* UIImagePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImagePickerController.swift; sourceTree = "<group>"; };
 		211F45F42C710E8600ABBAC3 /* SwiftActionButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftActionButtonView.swift; sourceTree = "<group>"; };
 		211F45F62C711DC600ABBAC3 /* SwipeAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeAction.swift; sourceTree = "<group>"; };
 		211F45F82C712F6C00ABBAC3 /* UserProfileVoew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserProfileVoew.swift; path = "MovieMatch/Core/Profile/User Profile/UserProfileVoew.swift"; sourceTree = SOURCE_ROOT; };
@@ -97,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				211F45F82C712F6C00ABBAC3 /* UserProfileVoew.swift */,
+				211C43732C7A5F47000B4755 /* UIImagePickerController.swift */,
 			);
 			path = "User Profile";
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 				2123B67E2C76858E0055C010 /* CurrentUserProfileHeaderView.swift in Sources */,
 				2127EEAF2C6FE0AF004C0C50 /* ContentView.swift in Sources */,
 				214ADF6F2C79645200A6EDB7 /* PopularMovieView.swift in Sources */,
+				211C43742C7A5F47000B4755 /* UIImagePickerController.swift in Sources */,
 				2127EEAD2C6FE0AF004C0C50 /* MovieMatchApp.swift in Sources */,
 				2127EEE62C703D97004C0C50 /* MockData.swift in Sources */,
 				211F45F72C711DC600ABBAC3 /* SwipeAction.swift in Sources */,
