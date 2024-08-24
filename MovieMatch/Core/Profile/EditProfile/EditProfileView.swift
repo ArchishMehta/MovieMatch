@@ -6,12 +6,17 @@
 //
 
 import SwiftUI
+
 struct EditProfileView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var bio = ""
     @State private var favmovie = ""
     @Binding var name: String
     @Binding var email: String
+    @State private var isGenderPickerPresented = false
+    @State private var isAgePickerPresented = false
+    @State private var selectedGender = "Man"
+    @State private var selectedAge = 16
     let user: User
     
     var body: some View {
@@ -39,16 +44,23 @@ struct EditProfileView: View {
                         .font(.subheadline)
                         .fontWeight(.bold)
                         .padding(.leading)
-                    HStack {
-                        Text("Man")
-                        Spacer()
-                        Image(systemName: "chevron.right")
-                            .imageScale(.small)
+                    Button(action: {
+                        isGenderPickerPresented = true
+                    }) {
+                        HStack {
+                            Text(selectedGender)
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                                .imageScale(.small)
+                        }
+                        .padding()
+                        .background(Color(.secondarySystemBackground))
+                        .font(.subheadline)
+                        .cornerRadius(8)
                     }
-                    .padding()
-                    .background(Color(.secondarySystemBackground))
-                    .font(.subheadline)
-                    .cornerRadius(8)
+                    .sheet(isPresented: $isGenderPickerPresented) {
+                        GenderPickerView(selectedGender: $selectedGender)
+                    }
                 }
                 .padding(.horizontal)
                 
@@ -57,16 +69,23 @@ struct EditProfileView: View {
                         .font(.subheadline)
                         .fontWeight(.bold)
                         .padding(.leading)
-                    HStack {
-                        Text("16")
-                        Spacer()
-                        Image(systemName: "calendar")
-                            .imageScale(.small)
+                    Button(action: {
+                        isAgePickerPresented = true
+                    }) {
+                        HStack {
+                            Text("\(selectedAge)")
+                            Spacer()
+                            Image(systemName: "calendar")
+                                .imageScale(.small)
+                        }
+                        .padding()
+                        .background(Color(.secondarySystemBackground))
+                        .font(.subheadline)
+                        .cornerRadius(8)
                     }
-                    .padding()
-                    .background(Color(.secondarySystemBackground))
-                    .font(.subheadline)
-                    .cornerRadius(8)
+                    .sheet(isPresented: $isAgePickerPresented) {
+                        AgePickerView(selectedAge: $selectedAge)
+                    }
                 }
                 .padding(.horizontal)
             }
@@ -90,6 +109,75 @@ struct EditProfileView: View {
     }
 }
 
+#Preview {
+    EditProfileView(name: .constant("John Doe"), email: .constant("john.doe@example.com"), user: MockData.users[1])
+}
+
+struct GenderPickerView: View {
+    @Binding var selectedGender: String
+    @Environment(\.presentationMode) var presentationMode
+    
+    var body: some View {
+        NavigationView {
+            List {
+                Button("Man") {
+                    selectedGender = "Man"
+                    dismiss()
+                }
+                Button("Woman") {
+                    selectedGender = "Woman"
+                    dismiss()
+                }
+                Button("Other") {
+                    selectedGender = "Other"
+                    dismiss()
+                }
+            }
+            .navigationTitle("Select Gender")
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Done") {
+                        dismiss()
+                    }
+                }
+            }
+        }
+    }
+    
+    private func dismiss() {
+        presentationMode.wrappedValue.dismiss()
+    }
+}
+
+struct AgePickerView: View {
+    @Binding var selectedAge: Int
+    @Environment(\.presentationMode) var presentationMode
+    
+    var body: some View {
+        NavigationView {
+            List {
+                ForEach(16..<100) { age in
+                    Button("\(age)") {
+                        selectedAge = age
+                        dismiss()
+                    }
+                }
+            }
+            .navigationTitle("Select Age")
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Done") {
+                        dismiss()
+                    }
+                }
+            }
+        }
+    }
+    
+    private func dismiss() {
+        presentationMode.wrappedValue.dismiss()
+    }
+}
 #Preview {
     EditProfileView(name: .constant("John Doe"), email: .constant("john.doe@example.com"), user: MockData.users[1])
 }
