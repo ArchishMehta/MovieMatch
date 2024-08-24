@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		211C43742C7A5F47000B4755 /* UIImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211C43732C7A5F47000B4755 /* UIImagePickerController.swift */; };
+		211C43762C7A6487000B4755 /* genreMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211C43752C7A6487000B4755 /* genreMapping.swift */; };
 		211F45F52C710E8600ABBAC3 /* SwiftActionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211F45F42C710E8600ABBAC3 /* SwiftActionButtonView.swift */; };
 		211F45F72C711DC600ABBAC3 /* SwipeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211F45F62C711DC600ABBAC3 /* SwipeAction.swift */; };
 		211F45F92C712F6C00ABBAC3 /* UserProfileVoew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211F45F82C712F6C00ABBAC3 /* UserProfileVoew.swift */; };
@@ -42,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		211C43732C7A5F47000B4755 /* UIImagePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImagePickerController.swift; sourceTree = "<group>"; };
+		211C43752C7A6487000B4755 /* genreMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = genreMapping.swift; path = "MovieMatch/Core/Profile/User Profile/genreMapping.swift"; sourceTree = SOURCE_ROOT; };
 		211F45F42C710E8600ABBAC3 /* SwiftActionButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftActionButtonView.swift; sourceTree = "<group>"; };
 		211F45F62C711DC600ABBAC3 /* SwipeAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeAction.swift; sourceTree = "<group>"; };
 		211F45F82C712F6C00ABBAC3 /* UserProfileVoew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserProfileVoew.swift; path = "MovieMatch/Core/Profile/User Profile/UserProfileVoew.swift"; sourceTree = SOURCE_ROOT; };
@@ -207,6 +209,7 @@
 			children = (
 				214ADF682C795DF200A6EDB7 /* DatabaseFetch.swift */,
 				214ADF6A2C7962CA00A6EDB7 /* Datamodels.swift */,
+				211C43752C7A6487000B4755 /* genreMapping.swift */,
 			);
 			path = DatabaseFetch;
 			sourceTree = "<group>";
@@ -398,6 +401,7 @@
 				214ADF752C79679F00A6EDB7 /* SearchView.swift in Sources */,
 				214ADF732C79678500A6EDB7 /* SearchViewModel.swift in Sources */,
 				2127EECC2C6FE52F004C0C50 /* UserInfoView.swift in Sources */,
+				211C43762C7A6487000B4755 /* genreMapping.swift in Sources */,
 				2127EEDA2C700CCC004C0C50 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
