@@ -18,4 +18,11 @@ struct Movie: Codable, Identifiable {
     let title: String
     let poster_path: String?
     let overview: String?
+    
+    var posterURL: URL? {
+        guard let posterPath = poster_path else {
+            return nil
+        }
+        return URL(string: "https://image.tmdb.org/t/p/w500\(posterPath)")
+    }
 }
