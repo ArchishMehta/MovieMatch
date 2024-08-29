@@ -19,7 +19,7 @@ struct UserInfoView: View {
                     .fontWeight(.heavy)
                 
                 Text(String(userInfo.year))
-                    .font(.title2)
+                    .font(.title)
                     .fontWeight(.light)
                 
                 Spacer()
